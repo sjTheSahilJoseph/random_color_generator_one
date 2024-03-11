@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../css/randomcolorgenerator.css';
 
 function RandomColorGenerator() {
@@ -26,8 +26,13 @@ function RandomColorGenerator() {
         const g = randomColorUtility(256);
         const b = randomColorUtility(256);
 
-        setColor(`rgb${r},${g},${b}`);
+        setColor(`rgb(${r},${g},${b})`);
     }
+
+    useEffect(()=>{
+        if (typeOfColor === 'rgb') handleCreateRgbColor();
+        else handleCreateHexColor();
+    }, [typeOfColor]);
 
     return (
         <>
@@ -66,7 +71,8 @@ function RandomColorGenerator() {
                 color: 'white',
                 fontSize: '60px',
                 marginTop: '40px',
-
+                flexDirection: 'column',
+                gap: '20px',
             }
         }>
         <h3>{typeOfColor === 'rgb' ? 'RGB' : 'HEX'}</h3>
