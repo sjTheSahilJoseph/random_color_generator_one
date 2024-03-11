@@ -22,7 +22,11 @@ function RandomColorGenerator() {
     }
 
     function handleCreateRgbColor() {
+        const r = randomColorUtility(256);
+        const g = randomColorUtility(256);
+        const b = randomColorUtility(256);
 
+        setColor(`rgb${r},${g},${b}`);
     }
 
     return (
@@ -54,6 +58,22 @@ function RandomColorGenerator() {
                     }
 
                 >Generate Random Color</button>
+        <div style={
+            {
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                color: 'white',
+                fontSize: '60px',
+                marginTop: '40px',
+
+            }
+        }>
+        <h3>{typeOfColor === 'rgb' ? 'RGB' : 'HEX'}</h3>
+            <h1>
+        {color}
+        </h1>
+        </div>
             </div>
         </>
     );
